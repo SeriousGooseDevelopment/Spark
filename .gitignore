@@ -1,0 +1,11 @@
+# XcodeGen output — regenerate with `xcodegen generate`
+Spark.xcodeproj/
+
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# XcodeGen-generated
+Spark/Info.plist

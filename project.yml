@@ -1,0 +1,77 @@
+name: Spark
+options:
+  bundleIdPrefix: com.timothykoelsch
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+targets:
+  Spark:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Spark
+    info:
+      path: Spark/Info.plist
+      properties:
+        CFBundleDisplayName: Spark
+        CFBundleShortVersionString: "4.2.1"
+        CFBundleVersion: "1"
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        UIViewControllerBasedStatusBarAppearance: false
+        UIUserInterfaceStyle: Light
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIAppFonts:
+          - PlusJakartaSans.ttf
+        NSLocalNetworkUsageDescription: "Spark discovers and connects to your Spark box on this Wi-Fi network to manage ad blocking and parental controls."
+        NSBonjourServices:
+          - _sparkagent._tcp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.timothykoelsch.Spark
+        PRODUCT_NAME: Spark
+        MARKETING_VERSION: "4.2.1"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Development"
+        DEVELOPMENT_TEAM: 7HK9642A6T
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+
+  SparkUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: SparkUITests
+    dependencies:
+      - target: Spark
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.timothykoelsch.SparkUITests
+        SWIFT_VERSION: "5.0"
+        TEST_TARGET_NAME: Spark
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 7HK9642A6T
+
+schemes:
+  Spark:
+    build:
+      targets:
+        Spark: all
+        SparkUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - SparkUITests
